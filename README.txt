@@ -9,8 +9,8 @@
 
     lets make a roadmap
 
-        - get this all on git + figure out gitignore
-        - do a bit of TDD action for a quote generator (author,
+        - ~~get this all on git + figure out gitignore~~ sorted
+        - do a bit of TDD action for a quote generator (author, quotes, gradient)
         - similar for some kinda of data scaffolding. We wont have a proper db, only in memory stuff,
             so reading and deserializing a json file in maybe?
         -
