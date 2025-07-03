@@ -1,6 +1,5 @@
-package com.example.rest_service;
+package com.example.rest_service.model_tests;
 
-import com.example.rest_service.models.Author;
 import com.example.rest_service.models.Gradient;
 import org.junit.jupiter.api.Test;
 

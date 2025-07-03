@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Greeting Pag</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Quote</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dynamic gradient colours */
+            --grad‑start: [[${gradientStart}]];
+            --grad‑end:   [[${gradientEnd}]];
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: "League Spartan", Arial, sans-serif;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, var(--grad‑start), var(--grad‑end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2; /* above the faded SVG */
+            padding: 0 1rem;
+        }
+
+        .greeting {
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 0 0 0.75rem;
+        }
+
+        blockquote {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            margin: 0;
+            font-style: italic;
+        }
+
+        cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1.125rem;
+            opacity: 0.85;
+        }
+
+        .boba {
+            margin-top: 1.25rem;
+            font-size: 1.125rem;
+        }
+
+        /* Faded sun / moon */
+        .symbol {
+            position: fixed;
+            top: 10%;
+            right: 8%;
+            width: 220px;
+            height: 220px;
+            opacity: 0.12;
+            pointer-events: none;
+            filter: blur(0.2px);
+        }
+    </style>
 </head>
 <body>
-    <h1 th:text="${message}">Placeholder</h1>
+<main class="container">
+    <h1 class="greeting" th:text="${greeting}">Good morning</h1>
+
+    <!-- Quote & Author -->
+    <blockquote th:text="${quote}">“An unexamined life is not worth living.”</blockquote>
+    <cite th:text="'— ' + ${author}">— Socrates</cite>
+
+    <p class="boba" th:if="${bobaRecommendation} != null">
+        Today’s boba recommendation: <strong th:text="${bobaRecommendation}">Taro Milk Tea</strong>
+    </p>
+</main>
+
+<!-- Decorative sun -->
+<svg th:if="${symbol} == 'sun'" class="symbol" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <circle cx="50" cy="50" r="22" fill="currentColor" />
+    <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+        <line x1="50" y1="4"  x2="50" y2="16" />
+        <line x1="50" y1="84" x2="50" y2="96" />
+        <line x1="4"  y1="50" x2="16" y2="50" />
+        <line x1="84" y1="50" x2="96" y2="50" />
+        <line x1="18" y1="18" x2="28" y2="28" />
+        <line x1="72" y1="72" x2="82" y2="82" />
+        <line x1="18" y1="82" x2="28" y2="72" />
+        <line x1="72" y1="28" x2="82" y2="18" />
+    </g>
+</svg>
+
+<!-- Decorative moon -->
+<svg th:if="${symbol} == 'moon'" class="symbol" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <path d="M60 10a40 40 0 1 0 20 80 32 32 0 1 1 0 -80" fill="currentColor"/>
+</svg>
 </body>
 </html>
