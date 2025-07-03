@@ -21,7 +21,7 @@ public class Gradient {
     /// Gradient class, takes an int between 0 and 255. A negative passed value will be randomized between 0 and 255
     ///
     public Gradient(int r, int g, int b) {
-
+        // should probably have injected the random here instead so we can fix it for testing
         Random rand = new Random();
         r = r <0 ? rand.nextInt(0,255) : r;
         g = g <0 ? rand.nextInt(0,255) : g;
@@ -30,6 +30,10 @@ public class Gradient {
         setR(r);
         setG(g);
         setB(b);
+        // TODO: this is bad bad bad we need to do hsv randomization then fit it somehow so we can get good colors
+        // as it stands it can make a gradient between black, and black. Which would be impossible to read anything
+        // new idea: we make random hue, have two set saturations and hues to go between.
+        // Tbh we should have had color (with hsv) as a model and the gradientService handle gradients but there we go
     }
 
     @Override
