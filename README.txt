@@ -11,6 +11,6 @@
 
         - ~~get this all on git + figure out gitignore~~ sorted
         - ~~do a bit of TDD action for a quote generator (author, quotes, gradient)~~ sorted
-        - similar for some kinda of data scaffolding. We wont have a proper db, only in memory stuff,
-            so reading and deserializing a json file in maybe?
+        - ~~similar for some kinda of data scaffolding. We wont have a proper db, only in memory stuff,
+            so reading and deserializing a json file in maybe?~~ we ended up just reading them in in the web controller constructor. Simplest solution given the time remaining.
         -
